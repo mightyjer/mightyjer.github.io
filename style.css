@@ -1,0 +1,73 @@
+#headname {
+    font: 48px avenir, serif;
+    text-align: center;
+    margin-bottom: 3px;
+}
+
+body {
+    background-color: whitesmoke;
+    font-family: "andale mono";
+}
+
+#navigation {
+    margin: auto;
+    text-align: center;
+    font: 18px black bold avenir;
+}
+
+.navitems {
+    font: 14px "andale mono", avenir, serif;
+    margin-right: 12px;
+    margin-left: 12px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    color: black;
+    background-color:lightgrey;
+    text-decoration: none;
+    border: 2px solid black;
+}
+
+.navitems:hover{
+    color: tomato;
+    background-color: white;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 75%;
+}
+
+.container {
+    margin: auto;
+    width: 75%;
+    border-radius: 5px;
+    background-color: #EEF2F6;
+    border-radius: 10px;
+}
+
+#main {
+    height: 500px;
+    margin-bottom: 20px;
+}
+
+#left {
+    float:left;
+    width: 40%;
+    margin: 25px;
+}
+
+#right {
+    float: right;
+    width: 40%;
+}
+
+footer {
+    font: 8px avenir;
+}
+
+img {
+    margin-top: 25px;
+}
+
