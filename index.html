@@ -3,34 +3,94 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeremy Black</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Jeremy Del Nero</title>
+    <style>
+        body {
+            background-color: navajowhite;
+        }
+
+        div {
+            background-color: darkseagreen;
+        }
+
+        #heading {
+            width: 50%;
+            margin: auto;
+            position: sticky;
+        }
+
+        #headshot-container {
+            border: 5px solid rebeccapurple;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 20px auto;
+        
+        }
+
+        #profile-card {
+            margin: 50px auto;
+            height: 600px;
+            width: 30rem;
+            border: 5px solid cornflowerblue;
+            border-radius: 20px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+        }
+
+
+        #my-name {
+            padding: 10px;
+            align-self: center;
+            font-size: 48px;
+            background-color: lightsalmon;
+            text-align: center;
+        }
+
+        #container {
+            margin-left: 10%;
+            width: 75%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 400px 400px;
+            grid-gap: 10px;
+            border: 5px solid black;
+            padding: 25px;
+            visibility: hiddn;
+            border-radius: 20px;
+        }
+
+        .section {
+            background-color: lightseagreen;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+            border: 5px solid black;
+            border-radius: 20px;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1 id="headname">Jeremy Black</h1>
-    <nav id="navigation">
-        <a class="navitems" href="index.html">home</a>
-        <a class="navitems" href="about.html">about</a>
-        <a class="navitems" href="work.html">work</a>
-        <a class="navitems" href="contact.html">contact</a>
-    </nav>
-    <hr>
-    <div id="main" class="container">
-        <section id="left">
-            Hello! My name is Jeremy and I'm a Brooklyn-based coder. I design and build websites. 
-            I build games using Arduino's open source Arduboy platform and computer-based games using Love2D framework.
-
-        </section>
-        <section id="right">
-            <img src="gameboy.png" alt="gameboy">
-        </section>
+    <div id="heading">
+        <div id="my-name">
+            < jeremy del nero>
+                </jeremy>
+        </div>
     </div>
-    <footer class="container">
-        Jeremy P Black -- 2021
-    </footer>
-    <script src="script.js"></script>
+    <div id="profile-card">
+        <div id="headshot-container"><img src="headshot.jpg" alt="headshot" height="200px" ;></div>
+    </div>
+    <div id="container">
+        <div class="section">This is a section 1</div>
+        <div class="section">This is a section 2</div>
+        <div class="section">This is a section 2</div>
+        <div class="section">This is a section 2</div>
+        <div class="section">This is a section 2</div>
+        <div class="section">This is a section 2</div>
+    </div>
+    </h1>
 </body>
 
 </html>
