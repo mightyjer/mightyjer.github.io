@@ -11,9 +11,7 @@
             background-color: navajowhite;
         }
 
-        div {
-            background-color: darkseagreen;
-        }
+
 
         #heading {
             width: 50%;
@@ -28,7 +26,7 @@
             border-radius: 50%;
             overflow: hidden;
             margin: 20px auto;
-        
+
         }
 
         #profile-card {
@@ -38,8 +36,18 @@
             border: 5px solid cornflowerblue;
             border-radius: 20px;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+            background-color: darkseagreen;
         }
 
+        #navbar {
+            margin-top: 10rem;
+            position: fixed;
+            float: left;
+        }
+
+        li:hover {
+            color: tomato;
+        }
 
         #my-name {
             padding: 10px;
@@ -76,12 +84,20 @@
     <div id="heading">
         <div id="my-name">
             < jeremy del nero>
-                </jeremy>
         </div>
+    </div>
+    <div id="navbar">
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Portfolio</li>
+            <li>Contact</li>
+        </ul>
     </div>
     <div id="profile-card">
         <div id="headshot-container"><img src="headshot.jpg" alt="headshot" height="200px" ;></div>
     </div>
+
     <div id="container">
         <div class="section">This is a section 1</div>
         <div class="section">This is a section 2</div>
