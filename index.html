@@ -9,14 +9,26 @@
     <style>
         body {
             background-color: navajowhite;
+            font: 14px "andale mono", avenir, sans-serif;
         }
 
+        #big-container {
+            margin: auto;
+        }
 
 
         #heading {
             width: 50%;
-            margin: auto;
+            margin: 20px auto;
             position: sticky;
+        }
+
+        footer {
+            width: 50%;
+            margin: 20px auto;
+            position: sticky;
+            top: 95%;
+            visibility: hidden;
         }
 
         #headshot-container {
@@ -30,7 +42,78 @@
         }
 
         #profile-card {
-            margin: 50px auto;
+            margin: auto;
+            height: 600px;
+            width: 30rem;
+            border: 5px solid cornflowerblue;
+            border-radius: 20px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+            background-color: darkseagreen;
+            animation-name: heighten;
+            animation-duration: 500ms;
+        }
+
+        @keyframes heighten {
+            0% {
+                height: 0px;
+            }
+
+            100% {
+                height: 600px;
+            }
+        }
+
+        nav {
+            width: 23rem;
+            margin: 10px auto;
+        }
+
+        .navitems {
+            font: 14px "andale mono", avenir, sans-serif;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 5px;
+            color: black;
+            background-color: lightgrey;
+            text-decoration: none;
+            border: 2px solid black;
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+        }
+
+        .navitems:hover {
+            color: tomato;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        #my-name,
+        footer {
+            padding: 10px;
+            align-self: center;
+            font-size: 48px;
+            background-color: lightsalmon;
+            text-align: center;
+        }
+
+        #portfolio {
+            margin: auto;
+            width: 60%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 150px 150px;
+            grid-gap: 10px;
+            border: 5px solid black;
+            padding: 25px;
+            border-radius: 20px;
+            background-color: tan;
+            animation-name: widen;
+            animation-duration: 500ms;
+        }
+
+        #contact {
+            margin: auto;
             height: 600px;
             width: 30rem;
             border: 5px solid cornflowerblue;
@@ -39,35 +122,46 @@
             background-color: darkseagreen;
         }
 
-        #navbar {
-            margin-top: 10rem;
-            position: fixed;
-            float: left;
+        @keyframes appear {
+            0% {
+                opacity: 0%;
+            }
+
+            100% {
+                opacity: 100%;
+            }
         }
 
-        li:hover {
-            color: tomato;
+        @keyframes widen {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 60%;
+            }
         }
 
-        #my-name {
-            padding: 10px;
-            align-self: center;
-            font-size: 48px;
-            background-color: lightsalmon;
-            text-align: center;
+        @keyframes expand {
+            0% {
+                height: 0px;
+                width: 0px;
+            }
+
+            100% {
+                height: 600px;
+                width: 30rem;
+            }
         }
 
-        #container {
-            margin-left: 10%;
-            width: 75%;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 400px 400px;
-            grid-gap: 10px;
-            border: 5px solid black;
-            padding: 25px;
-            visibility: hiddn;
-            border-radius: 20px;
+        #portvis {
+            display: none;
+        }
+
+        #contactvis {
+            display: none;
+            animation-name: expand;
+            animation-duration: 500ms;
         }
 
         .section {
@@ -76,6 +170,17 @@
             border: 5px solid black;
             border-radius: 20px;
             padding: 10px;
+            animation-name: appear;
+            animation-duration: 1s;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        p {
+            font: 12px avenir;
+            margin: 5px 15px 10px 15px;
+            animation-name: appear;
+            animation-duration: 1s;
         }
     </style>
 </head>
@@ -83,30 +188,112 @@
 <body>
     <div id="heading">
         <div id="my-name">
-            < jeremy del nero>
+            &lt;jeremy del nero&gt;
         </div>
     </div>
-    <div id="navbar">
-        <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Portfolio</li>
-            <li>Contact</li>
-        </ul>
-    </div>
-    <div id="profile-card">
-        <div id="headshot-container"><img src="headshot.jpg" alt="headshot" height="200px" ;></div>
-    </div>
+    <div id="big-container">
+        <nav>
+            <a class="navitems" onclick="bioVisible()">bio</a>
+            <a class="navitems" onclick="portfolioVisible()">portfolio</a>
+            <a class="navitems" onclick="contactVisible()">contact</a>
+        </nav>
 
-    <div id="container">
-        <div class="section">This is a section 1</div>
-        <div class="section">This is a section 2</div>
-        <div class="section">This is a section 2</div>
-        <div class="section">This is a section 2</div>
-        <div class="section">This is a section 2</div>
-        <div class="section">This is a section 2</div>
+        <div id="profile-card">
+            <div id="headshot-container"><img src="headshot.jpg" alt="headshot" height="200px"></div>
+            <p id="bio">
+                Hi, my name is Jeremy. I'm a brooklyn-based digital marketing and social media specialist.
+                <br><br>
+                Coffee enthusiast. Rock Climber. Vegan chef. Fearless biker.
+                Nintendo Geek. Amateur photographer. Retired Vlogger.
+                In my free time, I enjoy being a dad to my 34 plants
+                (and counting!), listening to indie rock, and meditating.
+            </p>
+        </div>
+
+        <div id="portvis">
+            <div id="portfolio">
+                <div class="section">Branded Video Collaborations</div>
+                <div class="section">Writing Samples</div>
+                <div class="section">Coding</div>
+                <div class="section">Digital Marketing</div>
+
+            </div>
+        </div>
+        <div id="contactvis">
+            <div id="contact">
+                <p>
+                    Hi there, here's how you can reach me!
+                <form class="survey-form"
+                    action="https://us-central1-nucamp-production.cloudfunctions.net/post/formdata" method="post">
+                    <fieldset>
+                        <legend>Your information</legend>
+                        <div>
+                            <label for="firstname">First Name:</label>
+                            <input type="text" name="firstname" id="firstname" placeholder="Your First Name" />
+                        </div>
+                        <div>
+                            <label for="lastname">Last Name:</label>
+                            <input type="text" name="lastname" id="lastname" placeholder="Your Last Name" />
+                        </div>
+                        <div>
+                            <label for="email">E-mail:</label>
+                            <input type="email" name="email" id="email" placeholder="Your E-mail" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Survey Questions</legend>
+                        <div>
+                            Favorite sport:
+                            <input type="radio" name="sport" id="baseball" value="baseball" />
+                            <label for="baseball">baseball</label>
+                            <input type="radio" name="sport" id="rugby" value="rugby" />
+                            <label for="rugby">rugby</label>
+                            <input type="radio" name="sport" id="snowboarding" value="snowboarding" />
+                            <label for="snowboarding">snowboarding</label>
+                        </div>
+                        <div>
+                            Your pets:
+                            <input type="checkbox" name="pet" id="cat" value="cat" />
+                            <label for="cat">cat</label>
+                            <input type="checkbox" name="pet" id="dog" value="dog" />
+                            <label for="dog">dog</label>
+                            <input type="checkbox" name="pet" id="iguana" value="iguana" />
+                            <label for="iguana">iguana</label>
+                        </div>
+                    </fieldset>
+                    <input type="submit" id="submit-btm" />
+                </form>
+                </p>
+            </div>
+        </div>
     </div>
-    </h1>
+    <footer>
+        &lt;/jeremy del nero&gt;
+    </footer>
+    <script>
+        let bio = document.querySelector("#profile-card");
+        let portfolio = document.querySelector("#portvis");
+        let contact = document.querySelector("#contactvis");
+
+        function bioVisible() {
+            portfolio.style.display = "none";
+            bio.style.display = "";
+            contact.style.display = "none";
+        }
+
+        function portfolioVisible() {
+            portfolio.style.display = "contents";
+            bio.style.display = "none";
+            contact.style.display = "none";
+        }
+
+        function contactVisible() {
+            portfolio.style.display = "none";
+            bio.style.display = "none";
+            contact.style.display = "contents";
+        }
+
+    </script>
 </body>
 
 </html>
