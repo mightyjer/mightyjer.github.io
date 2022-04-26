@@ -8,7 +8,7 @@
     <title>Jeremy Del Nero</title>
     <style>
         body {
-            background-color: navajowhite;
+            background-color: #8293B0;
             font: 14px "andale mono", avenir, sans-serif;
         }
 
@@ -45,10 +45,10 @@
             margin: auto;
             height: 600px;
             width: 30rem;
-            border: 5px solid cornflowerblue;
+            border: 5px solid rebeccapurple;
             border-radius: 20px;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
-            background-color: darkseagreen;
+            background-color: azure;
             animation-name: heighten;
             animation-duration: 500ms;
         }
@@ -99,15 +99,16 @@
 
         #portfolio {
             margin: auto;
-            width: 60%;
+            width: 40%;
+            height: 200px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: 150px 150px;
+            grid-template-rows: 1fr 1fr;
             grid-gap: 10px;
             border: 5px solid black;
             padding: 25px;
             border-radius: 20px;
-            background-color: tan;
+            background-color: azure;
             animation-name: widen;
             animation-duration: 500ms;
         }
@@ -116,10 +117,10 @@
             margin: auto;
             height: 600px;
             width: 30rem;
-            border: 5px solid cornflowerblue;
+            border: 5px solid #8556DC;
             border-radius: 20px;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
-            background-color: darkseagreen;
+            background-color: azure;
         }
 
         @keyframes appear {
@@ -134,11 +135,13 @@
 
         @keyframes widen {
             0% {
-                width: 0%;
+                width: 0px;
+                height: 0px;
             }
 
             100% {
-                width: 60%;
+                width: 40%;
+                height: 200px;
             }
         }
 
@@ -173,7 +176,6 @@
             animation-name: appear;
             animation-duration: 1s;
             text-align: center;
-            vertical-align: middle;
         }
 
         p {
@@ -181,6 +183,17 @@
             margin: 5px 15px 10px 15px;
             animation-name: appear;
             animation-duration: 1s;
+            text-align: justify;
+        }
+
+        h3 {
+            margin: auto;
+            animation-name: appear;
+            animation-duration: 2s;
+        }
+
+        .section:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -201,7 +214,15 @@
         <div id="profile-card">
             <div id="headshot-container"><img src="headshot.jpg" alt="headshot" height="200px"></div>
             <p id="bio">
-                Hi, my name is Jeremy. I'm a brooklyn-based digital marketing and social media specialist.
+
+                Hi, my name is jeremy. Nice to meet you.
+                <br>
+                he/him | infj | cancer
+                <br><br>
+                I’m a Brooklyn-based Jeremy-of-all-trades with experience in advertising, marketing, editing, writing,
+                video production, managing, and so much more. For five years, my husband and I were LGBTQ+ influencers
+                on YouTube. We amassed over 50,000 followers across our social platforms while working with leading
+                brands to create personalized, branded content for our audience.
                 <br><br>
                 Coffee enthusiast. Rock Climber. Vegan chef. Fearless biker.
                 Nintendo Geek. Amateur photographer. Retired Vlogger.
@@ -212,10 +233,18 @@
 
         <div id="portvis">
             <div id="portfolio">
-                <div class="section">Branded Video Collaborations</div>
-                <div class="section">Writing Samples</div>
-                <div class="section">Coding</div>
-                <div class="section">Digital Marketing</div>
+                <div class="section">
+                    <h3>Branded Video Collaborations</h3>
+                </div>
+                <div class="section">
+                    <h3>Writing Samples</h3>
+                </div>
+                <div class="section">
+                    <h3>Coding</h3>
+                </div>
+                <div class="section">
+                    <h3>Digital Marketing</h3>
+                </div>
 
             </div>
         </div>
