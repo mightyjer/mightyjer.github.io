@@ -6,204 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeremy Del Nero</title>
-    <style>
-        body {
-            background-color: #8293B0;
-            font: 14px "andale mono", avenir, sans-serif;
-        }
-
-        #big-container {
-            margin: auto;
-        }
-
-
-        #heading {
-            width: 50%;
-            margin: 20px auto;
-            position: sticky;
-        }
-
-        footer {
-            width: 50%;
-            margin: 20px auto;
-            position: sticky;
-            top: 95%;
-            visibility: hidden;
-        }
-
-        #headshot-container {
-            border: 5px solid rebeccapurple;
-            height: 200px;
-            width: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 20px auto;
-
-        }
-
-        #profile-card {
-            margin: auto;
-            height: 600px;
-            width: 30rem;
-            border: 5px solid rebeccapurple;
-            border-radius: 20px;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
-            background-color: azure;
-            animation-name: heighten;
-            animation-duration: 500ms;
-        }
-
-        @keyframes heighten {
-            0% {
-                height: 0px;
-            }
-
-            100% {
-                height: 600px;
-            }
-        }
-
-        nav {
-            width: 23rem;
-            margin: 10px auto;
-        }
-
-        .navitems {
-            font: 14px "andale mono", avenir, sans-serif;
-            font-weight: bold;
-            padding: 5px;
-            border-radius: 5px;
-            color: black;
-            background-color: lightgrey;
-            text-decoration: none;
-            border: 2px solid black;
-            display: inline-block;
-            width: 100px;
-            text-align: center;
-        }
-
-        .navitems:hover {
-            color: tomato;
-            background-color: white;
-            cursor: pointer;
-        }
-
-        #my-name,
-        footer {
-            padding: 10px;
-            align-self: center;
-            font-size: 48px;
-            background-color: lightsalmon;
-            text-align: center;
-        }
-
-        #portfolio {
-            margin: auto;
-            width: 40%;
-            height: 200px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            grid-gap: 10px;
-            border: 5px solid black;
-            padding: 25px;
-            border-radius: 20px;
-            background-color: azure;
-            animation-name: widen;
-            animation-duration: 500ms;
-        }
-
-        #contact {
-            margin: auto;
-            height: 600px;
-            width: 30rem;
-            border: 5px solid #8556DC;
-            border-radius: 20px;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
-            background-color: azure;
-        }
-
-        @keyframes appear {
-            0% {
-                opacity: 0%;
-            }
-
-            100% {
-                opacity: 100%;
-            }
-        }
-
-        @keyframes widen {
-            0% {
-                width: 0px;
-                height: 0px;
-            }
-
-            100% {
-                width: 40%;
-                height: 200px;
-            }
-        }
-
-        @keyframes expand {
-            0% {
-                height: 0px;
-                width: 0px;
-            }
-
-            100% {
-                height: 600px;
-                width: 30rem;
-            }
-        }
-
-        #portvis {
-            display: none;
-        }
-
-        #contactvis {
-            display: none;
-            animation-name: expand;
-            animation-duration: 500ms;
-        }
-
-        .section {
-            background-color: lightseagreen;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
-            border: 5px solid black;
-            border-radius: 20px;
-            padding: 10px;
-            animation-name: appear;
-            animation-duration: 1s;
-            text-align: center;
-        }
-
-        p {
-            font: 12px avenir;
-            margin: 5px 15px 10px 15px;
-            animation-name: appear;
-            animation-duration: 1s;
-            text-align: justify;
-        }
-
-        h3 {
-            margin: auto;
-            animation-name: appear;
-            animation-duration: 2s;
-        }
-
-        .section:hover {
-            transform: scale(1.1);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div id="heading">
+<body onload="bioVisible()">
+    <h1 id="heading">
         <div id="my-name">
-            &lt;jeremy del nero&gt;
+            <a href="https://mightyjer.github.io/">&lt;jeremy del nero&gt;</a>
         </div>
-    </div>
+    </h1>
     <div id="big-container">
         <nav>
             <a class="navitems" onclick="bioVisible()">bio</a>
@@ -211,11 +22,11 @@
             <a class="navitems" onclick="contactVisible()">contact</a>
         </nav>
 
-        <div id="profile-card">
+        <div id="bio">
             <div id="headshot-container"><img src="headshot.jpg" alt="headshot" height="200px"></div>
-            <p id="bio">
-
-                Hi, my name is jeremy. Nice to meet you.
+            <hr>
+            <p>
+                <strong>Hi, my name is jeremy. Nice to meet you.</strong>
                 <br>
                 he/him | infj | cancer
                 <br><br>
@@ -231,98 +42,51 @@
             </p>
         </div>
 
-        <div id="portvis">
-            <div id="portfolio">
-                <div class="section">
-                    <h3>Branded Video Collaborations</h3>
-                </div>
-                <div class="section">
-                    <h3>Writing Samples</h3>
-                </div>
-                <div class="section">
-                    <h3>Coding</h3>
-                </div>
-                <div class="section">
-                    <h3>Digital Marketing</h3>
-                </div>
 
+        <div id="portfolio">
+            <p>
+                Thanks for checking out my portfolio. This is not an exhaustive resource when it comes to my work and
+                capabilities, but rather a sampling of what's out there. Have a look around,
+                and head over to the contact tab if you'd like to reach out!
+            </p>
+            <hr>
+            <div class="portSection">
+                <h3>branded content</h3>
             </div>
-        </div>
-        <div id="contactvis">
-            <div id="contact">
-                <p>
-                    Hi there, here's how you can reach me!
-                <form class="survey-form"
-                    action="https://us-central1-nucamp-production.cloudfunctions.net/post/formdata" method="post">
-                    <fieldset>
-                        <legend>Your information</legend>
-                        <div>
-                            <label for="firstname">First Name:</label>
-                            <input type="text" name="firstname" id="firstname" placeholder="Your First Name" />
-                        </div>
-                        <div>
-                            <label for="lastname">Last Name:</label>
-                            <input type="text" name="lastname" id="lastname" placeholder="Your Last Name" />
-                        </div>
-                        <div>
-                            <label for="email">E-mail:</label>
-                            <input type="email" name="email" id="email" placeholder="Your E-mail" />
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Survey Questions</legend>
-                        <div>
-                            Favorite sport:
-                            <input type="radio" name="sport" id="baseball" value="baseball" />
-                            <label for="baseball">baseball</label>
-                            <input type="radio" name="sport" id="rugby" value="rugby" />
-                            <label for="rugby">rugby</label>
-                            <input type="radio" name="sport" id="snowboarding" value="snowboarding" />
-                            <label for="snowboarding">snowboarding</label>
-                        </div>
-                        <div>
-                            Your pets:
-                            <input type="checkbox" name="pet" id="cat" value="cat" />
-                            <label for="cat">cat</label>
-                            <input type="checkbox" name="pet" id="dog" value="dog" />
-                            <label for="dog">dog</label>
-                            <input type="checkbox" name="pet" id="iguana" value="iguana" />
-                            <label for="iguana">iguana</label>
-                        </div>
-                    </fieldset>
-                    <input type="submit" id="submit-btm" />
-                </form>
-                </p>
+            <div class="portSection">
+                <h3>writing samples</h3>
             </div>
+            <div class="portSection">
+                <h3>coding</h3>
+            </div>
+
+
         </div>
+
+
+        <div id="contact">
+            <p>
+                Hi there, here's how you can reach me.
+            </p>
+            <hr>
+            <div class="socialSection">
+                <h3><a href="mailto: jdelnero@me.com">e-mail</a></h3>
+            </div>
+            <div class="socialSection">
+                <h3><a href="https://www.instagram.com/mightyjer/">instagram</a></h3>
+            </div>
+            <div class="socialSection">
+                <h3><a href="https://www.linkedin.com/in/mightyjer/">linkedin</a></h3>
+            </div>
+
+
+        </div>
+
     </div>
     <footer>
         &lt;/jeremy del nero&gt;
     </footer>
-    <script>
-        let bio = document.querySelector("#profile-card");
-        let portfolio = document.querySelector("#portvis");
-        let contact = document.querySelector("#contactvis");
-
-        function bioVisible() {
-            portfolio.style.display = "none";
-            bio.style.display = "";
-            contact.style.display = "none";
-        }
-
-        function portfolioVisible() {
-            portfolio.style.display = "contents";
-            bio.style.display = "none";
-            contact.style.display = "none";
-        }
-
-        function contactVisible() {
-            portfolio.style.display = "none";
-            bio.style.display = "none";
-            contact.style.display = "contents";
-        }
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

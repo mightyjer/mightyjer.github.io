@@ -1,0 +1,181 @@
+body {
+    background-color: #8293B0;
+    font: 14px "andale mono", avenir, sans-serif;
+}
+
+#big-container {
+    margin: auto;
+}
+
+
+#heading {
+    width: 50%;
+    margin: 20px auto;
+    position: sticky;
+}
+
+
+
+#headshot-container {
+    border: 5px solid #111B94;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 20px auto;
+
+}
+
+#bio {
+    margin: auto;
+    height: 600px;
+    width: 500px;
+    border: 5px solid #111B94;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+    background-color: azure;
+    animation-name: appear;
+    animation-duration: 1s;
+    display: "";
+}
+
+#portfolio {
+    margin: auto;
+    height: 600px;
+    width: 500px;
+    border: 5px solid rebeccapurple;
+    border-radius: 20px;
+    background-color: azure;
+    animation-name: appear;
+    animation-duration: 1s;
+    display: "";
+}
+
+#contact {
+    margin: auto;
+    height: 600px;
+    width: 500px;
+    border: 5px solid #1B6C07;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+    background-color: azure;
+    animation-name: appear;
+    animation-duration: 1s;
+    display: "";
+}
+
+nav {
+    width: 23rem;
+    margin: 10px auto;
+}
+
+.navitems {
+    font: 14px "andale mono", avenir, sans-serif;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    color: black;
+    background-color: lightgrey;
+    text-decoration: none;
+    border: 2px solid black;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+
+
+
+.navitems:hover {
+    color: tomato;
+    background-color: white;
+    cursor: pointer;
+}
+
+#my-name,
+footer {
+    padding: 10px;
+    align-self: center;
+    font-size: 48px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0), white, rgba(0, 0, 0, 0));
+    text-align: center;
+}
+
+
+
+@keyframes appear {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes heighten {
+    0% {
+        width: 0px;
+        height: 0px;
+    }
+
+    100% {
+        height: 600px;
+        width: 500px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.portSection, .socialSection {
+    background-color: azure;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+    border: 3px solid rebeccapurple;
+    border-radius: 20px;
+    padding: 10px;
+    width: auto;
+    height: 100px;
+    margin: 10px;
+    text-align: center;
+}
+
+.socialSection {
+    border: 3px solid #1B6C07;
+}
+
+.portSection:hover, .socialSection:hover {
+    transform: scale(1.05);
+    background-color: #D8F1FA;
+}
+
+
+p {
+    font: 14px avenir;
+    margin: 5px 15px 10px 15px;
+    animation-name: appear;
+    animation-duration: 1s;
+}
+
+h3 {
+    margin: auto;
+    animation-name: appear;
+    animation-duration: 2s;
+    top:40%;
+    position: relative;
+}
+
+hr {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+footer {
+    width: 50%;
+    margin: 20px auto;
+    position: sticky;
+    top: 95%;
+    visibility: ;
+}
