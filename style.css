@@ -64,6 +64,10 @@ body {
     display: "";
 }
 
+#contact p, #portfolio p {
+    margin-top: 15px;
+}
+
 nav {
     width: 23rem;
     margin: 10px auto;
@@ -165,11 +169,10 @@ p {
     animation-duration: 1s;
 }
 
-.portSection h3, .socialSection h3 {
+button h3 {
     animation-name: appear;
     animation-duration: 2s;
-    top: 40%;
-    position: relative;
+    vertical-align: center;
 }
 
 #socialcontainer {
