@@ -124,7 +124,7 @@ footer {
     }
 }
 
-a {
+#my-name a {
     text-decoration: none;
     color: black;
 }
@@ -136,8 +136,8 @@ a {
     border: 3px solid rebeccapurple;
     border-radius: 20px;
     padding: 10px;
-    width: auto;
     height: 100px;
+    width: 220px;
     margin: 10px;
     text-align: center;
 }
@@ -146,9 +146,15 @@ a {
     border: 3px solid #1B6C07;
 }
 
+.samplesection {
+    border: 2px solid gold;
+    padding: 5px;
+}
+
 .portSection:hover, .socialSection:hover {
     transform: scale(1.05);
     background-color: #D8F1FA;
+    cursor: pointer;
 }
 
 
@@ -159,12 +165,22 @@ p {
     animation-duration: 1s;
 }
 
-h3 {
-    margin: auto;
+.portSection h3, .socialSection h3 {
     animation-name: appear;
     animation-duration: 2s;
-    top:40%;
+    top: 40%;
     position: relative;
+}
+
+#socialcontainer {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.writingsampleheadlines {
+    margin-left: 10px;
 }
 
 hr {
@@ -177,5 +193,14 @@ footer {
     margin: 20px auto;
     position: sticky;
     top: 95%;
-    visibility: ;
+    visibility: hidden;
+}
+
+.extwriting {
+    text-decoration: none;
+    color: black;
+}
+
+.extwriting:hover {
+    color: tomato;
 }
