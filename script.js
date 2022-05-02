@@ -7,7 +7,7 @@ function bioVisible() {
     portfolio.style.display = "none";
     contact.style.display = "none";
 
-    document.body.style.background = "#8293B0";
+    document.body.style.background = "linear-gradient(0deg, rgba(130, 147, 176, .5), rgba(130, 147, 176, .5)), url('images/flowers.jpg')";
 };
 
 function portfolioVisible() {
@@ -15,7 +15,7 @@ function portfolioVisible() {
     portfolio.style.display = "";
     contact.style.display = "none";
 
-    document.body.style.background = "#E2BAFD";
+    document.body.style.background = "linear-gradient(0deg, rgba(226, 186, 253, .5), rgba(226, 186, 253, .5)), url('images/flowers.jpg')";
 };
 
 function contactVisible() {
@@ -23,5 +23,5 @@ function contactVisible() {
     portfolio.style.display = "none";
     contact.style.display = "";
 
-    document.body.style.background = "#DBFFBA";
+    document.body.style.background = "linear-gradient(0deg, rgba(219, 255, 186, .5), rgba(219, 255, 186, .5)), url('images/flowers.jpg')";
 };

@@ -1,5 +1,5 @@
 body {
-    background-color: #8293B0;
+    background: linear-gradient(0deg, rgba(130, 147, 176, .5), rgba(130, 147, 176, .5)), url('images/flowers.jpg');
     font: 14px "andale mono", avenir, sans-serif;
 }
 
