@@ -39,6 +39,10 @@ body {
     display: "";
 }
 
+#writing{
+    height: 720px;
+}
+
 #portfolio {
     margin: auto;
     height: 600px;
