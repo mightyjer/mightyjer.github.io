@@ -28,7 +28,7 @@ body {
 
 #bio {
     margin: auto;
-    height: 600px;
+    height: auto;
     width: 500px;
     border: 5px solid #111B94;
     border-radius: 20px;
@@ -95,7 +95,7 @@ body {
 
 #portfolio {
     margin: auto;
-    height: 600px;
+    height: auto;
     width: 500px;
     border: 5px solid rebeccapurple;
     border-radius: 20px;
@@ -107,7 +107,7 @@ body {
 
 #contact {
     margin: auto;
-    height: 600px;
+    height: auto;
     width: 500px;
     border: 5px solid #1B6C07;
     border-radius: 20px;
