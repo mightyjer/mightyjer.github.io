@@ -26,7 +26,7 @@ body {
 
 }
 
-#bio, #writing {
+#bio {
     margin: auto;
     height: 600px;
     width: 500px;
@@ -39,8 +39,58 @@ body {
     display: "";
 }
 
-#writing{
+#writing {
     height: 720px;
+    margin: auto;
+    width: 500px;
+    border: 5px solid #111B94;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+    background-color: azure;
+    animation-name: appear;
+    animation-duration: 1s;
+}
+
+#brandedcontent {
+    height: 840px;
+    margin: auto;
+    width: 500px;
+    border: 5px solid #111B94;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+    background-color: azure;
+    animation-name: appear;
+    animation-duration: 1s;
+}
+
+.brandedposts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+#management {
+    height: 420px;
+    margin: auto;
+    width: 500px;
+    border: 5px solid #111B94;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+    background-color: azure;
+    animation-name: appear;
+    animation-duration: 1s;
+}
+
+#codingsamples {
+    height: auto;
+    margin: auto;
+    width: 500px;
+    border: 5px solid #111B94;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, .29);
+    background-color: azure;
+    animation-name: appear;
+    animation-duration: 1s;
 }
 
 #portfolio {

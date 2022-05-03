@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width", initial-scale="1.0">
+    <title>Matching Game</title>
+    <style>
+        body {
+            background-color: darkgrey;
+        }
+
+        h1 {
+            font: avenir, helvetica, serif;
+            width: 400px;
+            text-align: center;
+            border: 5px solid indigo;
+            border-radius: 10px;
+            background-color: lightblue;
+            opacity: .75;
+            margin-left: 300px;
+        }
+
+        img {
+            position: absolute;
+            animation-duration: 2s;
+            animation-name: appear;
+        }
+
+        div {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+        }
+
+        #rightside {
+            left: 500px;
+            border-left: 5px dotted red;
+        }
+
+        hr {
+            border-bottom: 5px dotted red;
+            margin-left: 0;
+        }
+
+        button {
+            padding: 10px;
+            font: 20px bold avenir, helvetica, serif;
+            color: red;
+            border-radius: 5px;
+            margin-left: 300px;
+            margin-bottom: 10px;
+            background-color:lightblue;
+        }
+
+        #score {
+            font: 30px avenir, helvetica, serif;
+            color: indigo;
+            border: 5px solid indigo;
+            background-color: lightblue;
+            margin-left: 10px;
+            padding: 3px;
+            opacity: .75;
+            border-radius: 5px;
+        }
+
+        #instructions {
+            width: 1000px;
+            color: indigo;
+            font: 14px avenir, helvetica, serif;
+            text-align: center;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                height: 10px;
+            }
+            to {
+                opacity: 1;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Matching Game </h1>
+    <p id="instructions">
+        Instructions: On the left side, there is one extra smily face. Click it and advance to the next level!<br>
+        Click anywhere else and it's <em>Game Over</em>. Click on this text to hide the instructions.
+    </p>
+    <span id="score">Score: </span>
+    <button type="button" onclick="newGame()">New Game</button>
+    <hr>
+    <div id="gamespace">
+        <div id="leftside"></div>
+        <div id="rightside"></div>
+    </div>
+    <script>
+        document.querySelector("#instructions").addEventListener('click', hideInstructions);
+        window.addEventListener('load', newGame);
+
+        //scoring
+        let scoreValue = 0;
+        let pointWorth = 1;
+        const score = document.createTextNode(scoreValue);
+        document.querySelector("#score").appendChild(score);
+
+        let numberOfFaces = 5;
+        const theLeftSide = document.querySelector("#leftside");
+        const theRightSide = document.querySelector("#rightside");
+
+        function generateFaces() {
+            for (let i = 0; i < numberOfFaces; i++) {
+                let face = document.createElement('img');
+                face.src = 'images/smile.png';
+                let randomTop = Math.floor(Math.random() * 400) + 1;
+                let randomLeft = Math.floor(Math.random() * 400) + 1;
+                face.style.top = randomTop + 'px';
+                face.style.left = randomLeft + 'px';
+                theLeftSide.appendChild(face);
+            }
+
+            const leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages.removeChild(leftSideImages.lastChild);
+            theRightSide.appendChild(leftSideImages);
+            theLeftSide.lastChild.addEventListener('click', nextLevel);
+            document.querySelector("#gamespace").addEventListener('click', gameOver);
+        }
+
+        function nextLevel() {
+            event.stopPropagation();
+            removeAllFaces();
+            numberOfFaces += 3;
+            generateFaces();
+            scoreValue += pointWorth;
+            score.nodeValue = scoreValue;
+            pointWorth = Math.ceil(pointWorth * 1.5);
+        }
+
+        function gameOver() {
+            theLeftSide.lastChild.removeEventListener('click', nextLevel);
+            document.querySelector("#gamespace").removeEventListener('click', gameOver);
+            alert(`Game Over! Your score: ${scoreValue}`);
+        }
+
+        //changed window.load function to newGame
+        function newGame() {
+            score.nodeValue = 0;
+            numberOfFaces = 5;
+            pointWorth = 1;
+            scoreValue = 0;
+            removeAllFaces();
+            generateFaces();
+        }
+
+        function removeAllFaces() {
+            while (theLeftSide.firstChild) {
+                theLeftSide.removeChild(theLeftSide.firstChild);
+            }
+            while (theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild);
+            }
+        }
+
+        function hideInstructions() {
+            document.querySelector("#instructions").style.visibility = "hidden";
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Color Guessing Game</title>
+    <meta charset="utf-8"/>
+    <style>
+
+h1 {
+    color: darkgreen;
+    border: 5px solid sandybrown;
+    border-radius: 20px;
+    background-color: rgb(87, 177, 135);
+    width: 400px;
+    text-align: center;
+    margin: 20px;
+}
+
+h4 {
+    color: darkgreen;
+    border: 5px dotted sandybrown;
+    text-align: center;
+    margin: 15px;
+    padding: 5px;
+}
+
+button {
+    background-color: green;
+    color: ghostwhite;
+    border-radius: 20px;
+}
+
+div {
+    border: 5px solid sandybrown;
+    border-radius: 20px;
+    background-color: rgb(87, 177, 135);
+    width: 400px;
+    height: 50px;
+    margin: 20px;
+}
+
+nav {
+    padding-top: 15px;
+    padding-left: 75px;
+}
+
+#colorsSection {
+    height: 455px;
+    color: ghostwhite;
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+<h1>Color Guessing Game</h1>
+<div>
+<nav><button type="button" onclick="runGame()">Start Game</button> | <button type="button" onclick="addColor()">Add Color</button> | <button type="button" onclick="fillArray()">New Colors</button></nav>
+</div>
+<div id="colorsSection">
+    <h4>You're playing with these colors: </h4>
+</div>
+<script>
+// https://gist.github.com/bobspace/2712980 Found an array of all supported colors!
+const ALL_POSSIBLE_COLORS = ["aliceblue",
+"antiquewhite" ,
+"aqua" ,
+"aquamarine" ,
+"azure" ,
+"beige" ,
+"bisque" ,
+"black" ,
+"blanchedalmond" ,
+"blue" ,
+"blueviolet" ,
+"brown" ,
+"burlywood" ,
+"cadetblue" ,
+"chartreuse" ,
+"chocolate" ,
+"coral" ,
+"cornflowerblue" ,
+"cornsilk" ,
+"crimson" ,
+"cyan" ,
+"darkblue" ,
+"darkcyan" ,
+"darkgoldenrod" ,
+"darkgray" ,
+"darkgrey" ,
+"darkgreen" ,
+"darkkhaki" ,
+"darkmagenta" ,
+"darkolivegreen" ,
+"darkorange" ,
+"darkorchid" ,
+"darkred" ,
+"darksalmon" ,
+"darkseagreen" ,
+"darkslateblue" ,
+"darkslategray" ,
+"darkslategrey" ,
+"darkturquoise" ,
+"darkviolet" ,
+"deeppink" ,
+"deepskyblue" ,
+"dimgray" ,
+"dimgrey" ,
+"dodgerblue" ,
+"firebrick" ,
+"floralwhite" ,
+"forestgreen" ,
+"fuchsia" ,
+"gainsboro" ,
+"ghostwhite" ,
+"gold" ,
+"goldenrod" ,
+"gray" ,
+"grey" ,
+"green" ,
+"greenyellow" ,
+"honeydew" ,
+"hotpink" ,
+"indianred" ,
+"indigo" ,
+"ivory" ,
+"khaki" ,
+"lavender" ,
+"lavenderblush" ,
+"lawngreen" ,
+"lemonchiffon" ,
+"lightblue" ,
+"lightcoral" ,
+"lightcyan" ,
+"lightgoldenrodyellow" ,
+"lightgray" ,
+"lightgreen" ,
+"lightpink" ,
+"lightsalmon" ,
+"lightseagreen" ,
+"lightskyblue" ,
+"lightslategray" ,
+"lightslategrey" ,
+"lightsteelblue" ,
+"lightyellow" ,
+"lime" ,
+"limegreen" ,
+"linen" ,
+"magenta" ,
+"maroon" ,
+"mediumaquamarine" ,
+"mediumblue" ,
+"mediumorchid" ,
+"mediumpurple" ,
+"mediumseagreen" ,
+"mediumslateblue" ,
+"mediumspringgreen" ,
+"mediumturquoise" ,
+"mediumvioletred" ,
+"midnightblue" ,
+"mintcream" ,
+"mistyrose" ,
+"moccasin" ,
+"navajowhite" ,
+"navy" ,
+"oldlace" ,
+"olive" ,
+"olivedrab" ,
+"orange" ,
+"orangered" ,
+"orchid" ,
+"palegoldenrod" ,
+"palegreen" ,
+"paleturquoise" ,
+"palevioletred" ,
+"papayawhip" ,
+"peachpuff" ,
+"peru" ,
+"pink" ,
+"plum" ,
+"powderblue" ,
+"purple" ,
+"rebeccapurple" ,
+"red" ,
+"rosybrown" ,
+"royalblue" ,
+"saddlebrown" ,
+"salmon" ,
+"sandybrown" ,
+"seagreen" ,
+"seashell" ,
+"sienna" ,
+"silver" ,
+"skyblue" ,
+"slateblue" ,
+"slategray" ,
+"slategrey" ,
+"snow" ,
+"springgreen" ,
+"steelblue" ,
+"tan" ,
+"teal" ,
+"thistle" ,
+"tomato" ,
+"turquoise" ,
+"violet" ,
+"wheat" ,
+"white" ,
+"whitesmoke" ,
+"yellow" ,
+"yellowgreen" ,];
+let colors_array = [];
+const COLORS_MAX = 20;
+let numTries = 0;
+const textArray = document.createTextNode("Press 'New Colors' to generate your game colors!");
+document.querySelector("#colorsSection").appendChild(textArray);
+
+function fillArray(){
+    //fills array with 12 random colors from all supported html colors
+    colors_array = [];
+   textArray.nodeValue = "";
+    
+    do {
+        let randColor = getColor(ALL_POSSIBLE_COLORS);
+        if (!colors_array.includes(randColor)){
+            colors_array.push(randColor);
+        }
+    } while (colors_array.length < 12);
+
+    colors_array.sort();
+    for (let i=0; i<colors_array.length; i++){
+       textArray.nodeValue += colors_array[i];
+        if (i < colors_array.length - 1){
+           textArray.nodeValue +=", "
+        }
+    }
+    numTries = 0;
+}
+
+function getColor(array){
+    //picks a random color from the inputted array
+    const TARGET_INDEX = Math.floor(Math.random() * array.length);
+    return array[TARGET_INDEX];
+}
+
+function addColor(){
+    //optional function allows user to add their own colors to the populated list
+    if (colors_array.length < 10){
+        alert("Please press 'New Colors' to populate the color array before adding your own colors.");
+        return;
+    }  
+    if (colors_array.length >= COLORS_MAX){
+        alert("You're playing with too many colors now! Start the game already!");
+        return;
+    }
+    let color = (prompt("What color do you want to add?"));
+    if (color === null){
+        alert("Don't want to add any? No problem.");
+        return;
+    } else {
+        color = color.toLowerCase();
+    }
+    if (ALL_POSSIBLE_COLORS.includes(color)){
+        if (colors_array.includes(color)){
+            alert(`The color ${color} is already in the color array. Pick a different one!`);
+            addColor();
+        } else {
+            colors_array.push(color);
+            textArray.nodeValue += ", " + color ;
+            colors_array.sort();
+            alert(`You added ${color} to the array!`);
+        }
+    } else {
+        alert(`Your color '${color}' is not supported by HTML.`);
+        addColor();
+    }
+}
+
+function runGame()
+{
+    //Main Game Loop
+    if (colors_array.length < 10){
+        alert("Please press 'New Colors' to populate the color array before starting the game.");
+        return;
+    }
+    let guess = '';
+    let correct = false;
+    const TARGET = getColor(colors_array);
+    
+    console.log(TARGET);
+    do {
+        guess = prompt('I am thinking of one of these colors:\n\n' + colors_array.join(', ') + 
+        '\n\nWhat color am I thinking of?\n');
+        if (guess === null) {
+            alert("You exited the game.\n\n Please press 'Start Game' to play again with the same colors or press 'New Colors' for a new set.");
+            numTries = 0;
+            return;
+        } else {
+            guess = guess.toLowerCase();
+        }
+        numTries++;
+        correct = checkGuess(guess, TARGET);
+    } while (!correct);
+
+    alert(`You got it! The color was: ${TARGET}\n\nIt took you ${numTries} guesses to get it.\n\n Press Okay to set the color to the background of this page.`);
+    document.body.style.background = guess;
+    numTries = 0;
+}
+
+function checkGuess (guess, TARGET){
+    let correct = false;
+    if (!colors_array.includes(guess)){
+        --numTries;
+        alert(`Your guess: ${guess} is not in the color array. Please try again.\n\n`);
+    } else if (guess > TARGET){
+        alert(`Your guess: ${guess} is too high. Guess lower!\n\n Number of guesses: ${numTries}`);
+    } else if(guess < TARGET){
+        alert(`Your guess: ${guess} is too low. Guess higher!\n\n Number of guesses: ${numTries}`)
+    } else {
+        correct = true;
+    }
+    return correct;
+}
+</script>
+</body>
+</html>

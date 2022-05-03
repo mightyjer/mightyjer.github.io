@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Art Rendering</title>
+    <style>
+
+        body {
+            background-color: aliceblue;
+        }
+
+        h1, div, button, #arttitle {
+            color: gray;
+            text-align: center;
+            font-weight: 400px;
+        }
+
+        #flexy {
+            display:flex;
+            width: auto;
+        }
+
+        #artspace {
+            border: 4px solid darkgrey;
+            background-color: ghostwhite;
+            width: 400px;
+            height: 400px;
+            padding: 10px;
+            flex: center;
+        }
+
+        #saveimage {
+            border: 4px solid darkgrey;
+            background-color: ghostwhite;
+            width: 400px;
+            height: 400px;
+            padding: 10px;
+            flex: right;
+            margin-left: 25px;
+        }
+
+        #generate {
+            align-content: center;
+            margin: auto;
+        }
+
+        hr {
+            width: 50%;
+        }
+
+        p {
+            height: 20px;
+            font-size: 18px;
+        }
+
+        #colorform {
+            border: 4px solid darkgrey;
+            background-color: ghostwhite;
+            width: 400px;
+            height: 400px;
+            padding: 10px;
+            float: left;
+            margin-right: 25px;
+        }
+
+        .boxnummaxmin {
+            font: 10px darkgrey avenir, serif;
+        }
+
+        #bigdownloadbutton{
+            height: 200px;
+            width: 200px;
+            border: 5px darkgray solid;
+            margin: 25%;
+            font: 25px black avenir, serif;
+            border-radius: 25px;
+        }
+        input {
+            margin: 3px;
+        }
+
+        #togglecolor {
+            width:10px;
+            height:3px;
+        }
+    </style>
+</head>
+<body>
+    <h1> Random Art Rendering</h1>
+    <hr>
+    <p id="arttitle"> </p>
+<div id="flexy">
+    <div id="colorform">
+        <section id="generate">
+            <button type="button" onclick="generateArt(drawType)">Generate Art</button>
+            <button type="button" onclick="clearArt()">Clear Art</button>
+        </section>
+        <hr>
+        <form>
+            <label for="boxes"> Draw Boxes</label>
+            <input type="radio" name="drawType" id="drawType" value = "boxes" onchange="setBoxes()">
+            <label for="lines"> Draw Lines</label>
+            <input type="radio" name="drawType" id="drawType" value = "lines" onchange="setLines()"> 
+            <br>
+            <label for="colorselector">Use one color: </label>
+            <input type="color" id="colorselector" onchange="setColor()">
+            <br>
+            <label for="togglecolor">Use random colors: </label>
+            <input type="button" id="togglecolor" onclick="gorandomcolor()">
+            <br>
+            <label for="boxnumber">How many to draw?</label>
+            <span class="boxnummaxmin">5</span><input type="range" name="boxnumber" id="boxnumber" min="5" max="50" onchange="setBoxNumber()"><span class="boxnummaxmin">50</span>      
+        </form>
+    </div>
+    <div id="artspace">
+        <canvas id="canvas" height="400" width="400"> </canvas>
+        <hr style="margin-top: 25px">
+    </div>
+    <div id="saveimage">
+        <button type="button" id="bigdownloadbutton" onclick="downloadCanvas()">Download Art</button>
+    </div>
+</div>
+<script>
+let titleon = false;
+let colorselected = false;
+function gorandomcolor(){
+    colorselected = false;
+}
+const allPossibleColors = [
+  "aliceblue",
+  "antiquewhite",
+  "aqua",
+  "aquamarine",
+  "azure",
+  "beige",
+  "bisque",
+  "black",
+  "blanchedalmond",
+  "blue",
+  "blueviolet",
+  "brown",
+  "burlywood",
+  "cadetblue",
+  "chartreuse",
+  "chocolate",
+  "coral",
+  "cornflowerblue",
+  "cornsilk",
+  "crimson",
+  "cyan",
+  "darkblue",
+  "darkcyan",
+  "darkgoldenrod",
+  "darkgray",
+  "darkgrey",
+  "darkgreen",
+  "darkkhaki",
+  "darkmagenta",
+  "darkolivegreen",
+  "darkorange",
+  "darkorchid",
+  "darkred",
+  "darksalmon",
+  "darkseagreen",
+  "darkslateblue",
+  "darkslategray",
+  "darkslategrey",
+  "darkturquoise",
+  "darkviolet",
+  "deeppink",
+  "deepskyblue",
+  "dimgray",
+  "dimgrey",
+  "dodgerblue",
+  "firebrick",
+  "floralwhite",
+  "forestgreen",
+  "fuchsia",
+  "gainsboro",
+  "ghostwhite",
+  "gold",
+  "goldenrod",
+  "gray",
+  "grey",
+  "green",
+  "greenyellow",
+  "honeydew",
+  "hotpink",
+  "indianred",
+  "indigo",
+  "ivory",
+  "khaki",
+  "lavender",
+  "lavenderblush",
+  "lawngreen",
+  "lemonchiffon",
+  "lightblue",
+  "lightcoral",
+  "lightcyan",
+  "lightgoldenrodyellow",
+  "lightgray",
+  "lightgrey",
+  "lightgreen",
+  "lightpink",
+  "lightsalmon",
+  "lightseagreen",
+  "lightskyblue",
+  "lightslategray",
+  "lightslategrey",
+  "lightsteelblue",
+  "lightyellow",
+  "lime",
+  "limegreen",
+  "linen",
+  "magenta",
+  "maroon",
+  "mediumaquamarine",
+  "mediumblue",
+  "mediumorchid",
+  "mediumpurple",
+  "mediumseagreen",
+  "mediumslateblue",
+  "mediumspringgreen",
+  "mediumturquoise",
+  "mediumvioletred",
+  "midnightblue",
+  "mintcream",
+  "mistyrose",
+  "moccasin",
+  "navajowhite",
+  "navy",
+  "oldlace",
+  "olive",
+  "olivedrab",
+  "orange",
+  "orangered",
+  "orchid",
+  "palegoldenrod",
+  "palegreen",
+  "paleturquoise",
+  "palevioletred",
+  "papayawhip",
+  "peachpuff",
+  "peru",
+  "pink",
+  "plum",
+  "powderblue",
+  "purple",
+  "rebeccapurple",
+  "red",
+  "rosybrown",
+  "royalblue",
+  "saddlebrown",
+  "salmon",
+  "sandybrown",
+  "seagreen",
+  "seashell",
+  "sienna",
+  "silver",
+  "skyblue",
+  "slateblue",
+  "slategray",
+  "slategrey",
+  "snow",
+  "springgreen",
+  "steelblue",
+  "tan",
+  "teal",
+  "thistle",
+  "tomato",
+  "turquoise",
+  "violet",
+  "wheat",
+  "white",
+  "whitesmoke",
+  "yellow",
+  "yellowgreen"]
+const warmColors = [];
+const coolColors = [];
+const word1 = ['Little', 'Surprisingly', 'Mostly', 'Flimsy', 'Curious', 'Torn', 'Cluttered', 'Furtive', 'Abandoned'];
+const word2 = ['Downhill', 'Subterranean', 'Shallow', 'Lush', 'Hypnotizing', 'Adorned', 'Vacant', 'Abandoned'];
+const word3 = ['Valleys', 'Landscapes', 'Pits', 'Bones', 'City', 'Smiles', 'Branches', 'Pavement', 'Globes', 'Rainbows', 'Hints', 'Mills', 'Playgrounds', 'Shoes'];
+const artTitle = document.createTextNode(" ");
+document.querySelector("#arttitle").appendChild(artTitle);
+let selectedColor = document.querySelector("#colorselector").value;
+let boxNumber = 50;
+function setColor(){
+    selectedColor = document.querySelector("#colorselector").value;
+    console.log(selectedColor);
+    colorselected = true;
+}
+function setBoxNumber(){
+    boxNumber = document.querySelector("#boxnumber").value;
+    console.log(boxNumber);
+}
+const c = document.getElementById("canvas");
+const ctx = c.getContext("2d");
+let drawType = 'boxes';
+function setLines(){
+    drawType = 'lines';
+    console.log(drawType);
+}
+function setBoxes(){
+    drawType = 'boxes';
+    console.log(drawType);
+}
+    function generateArt(drawType){
+        if (drawType === 'boxes'){
+            generateBoxes();
+        } else if (drawType === 'lines'){
+            generateLines();
+        }
+    }
+    function generateBoxes(){
+        for (let i = 0; i < boxNumber; i++){
+        let randomColor = getColor();   
+        let randomX = Math.ceil(Math.random() * 400);
+        let randomY = Math.ceil(Math.random() * 400);
+        let randomH = Math.ceil(Math.random() * 85) + 8;
+        let randomW = Math.ceil(Math.random() * 85) + 8;
+        ctx.fillStyle = randomColor;
+        ctx.fillRect(randomX, randomY, randomH, randomW);
+        }
+        generateTitle();
+    }
+    function generateLines(){
+        for (let i = 0; i< boxNumber; i++){
+        let randomX = Math.ceil(Math.random() * 400);
+        let randomY = Math.ceil(Math.random() * 400);
+        let randomX2 = Math.ceil(Math.random() * 400);
+        let randomY2 = Math.ceil(Math.random() * 400);
+        let lineW = Math.ceil(Math.random() * 3);
+        ctx.beginPath();
+        ctx.strokeStyle = getColor(); // Purple path
+        ctx.moveTo(randomX, randomY);
+        ctx.lineTo(randomX2, randomY2); 
+        ctx.stroke(); // Draw it    
+    }
+    generateTitle();
+    }
+    function clearArt() {
+        ctx.clearRect(0, 0, 400, 400);
+        artTitle.nodeValue = " ";
+        titleon = false;
+    }
+    function getRandom(array){
+        const i = Math.floor(Math.random() * array.length);
+        return array[i];
+    }
+    function getColor(){
+        if (colorselected){
+                return selectedColor;
+            } else {
+                return getRandom(allPossibleColors);
+            }
+    }
+    function downloadCanvas(){  
+    // get canvas data  
+    var image = canvas.toDataURL();  
+  
+    // create temporary link  
+    var tmpLink = document.createElement( 'a' );  
+    tmpLink.download = 'image.png'; // set the name of the download file 
+    tmpLink.href = image;  
+  
+    // temporarily add link to body and initiate the download  
+    document.body.appendChild( tmpLink );  
+    tmpLink.click();  
+    document.body.removeChild( tmpLink );  
+}
+    function generateTitle(){
+        if (!titleon){
+            artTitle.nodeValue += `${getRandom(word1)} ${getRandom(word2)} ${getRandom(word3)}`;
+            titleon = true;
+        }
+    }
+</script>
+</body>
+</html>
