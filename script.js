@@ -1,3 +1,4 @@
+/*
 let bio = document.querySelector("#bio");
 let portfolio = document.querySelector("#portfolio");
 let contact = document.querySelector("#contact");
@@ -24,4 +25,4 @@ function contactVisible() {
     contact.style.display = "";
 
     document.body.style.background = "linear-gradient(0deg, rgba(219, 255, 186, .5), rgba(219, 255, 186, .5)), url('images/flowers.jpg')";
-};
+}; */
